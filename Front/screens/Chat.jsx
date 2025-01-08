@@ -6,8 +6,10 @@ import {
   Text,
   TextInput,
   View,
-  ActivityIndicator
+  ActivityIndicator,
+  Platform
 } from 'react-native'
+
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import { useDispatch, useSelector } from 'react-redux'
 // import {
@@ -62,6 +64,7 @@ export function Chat() {
           data={messages}
           keyExtractor={(item) => item.id}
           renderItem={renderItem}
+          style={{ flex: 1 }} // Add this
           contentContainerStyle={{ flexGrow: 1 }}
           onContentSizeChange={() => scrollToEnd(flatListRef)}
         />
@@ -110,6 +113,10 @@ const styles = StyleSheet.create({
     textAlign: 'center'
   },
   chatBox: {
+    ...Platform.select({
+      web: { maxHeight: '70vh' },
+      default: {}
+    }),
     flex: 1,
     backgroundColor: '#fff',
     borderWidth: 1,
@@ -124,6 +131,7 @@ const styles = StyleSheet.create({
     elevation: 3
   },
   inputContainer: {
+    flexShrink: 0,
     flexDirection: 'row',
     alignItems: 'center',
     paddingHorizontal: 10,

@@ -25,6 +25,7 @@ export const connectSocket = (dispatch, setIsConnected, addMessage) => {
 export const sendMessage = (message) => {
   socket.emit('chat_message', message)
 }
+
 export const disconnectSocket = () => {
   socket.disconnect()
 }

@@ -21,7 +21,6 @@ export function WelcomeScreen({ navigation }) {
       setShowWarning(true)
     }
   }
-
   return (
     <View style={styles.container}>
       <Text style={styles.title}>We Are Connected</Text>
